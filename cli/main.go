@@ -1,6 +1,8 @@
 package main
 
-import "hpe.one/server"
+import (
+	"hpe.one/server"
+)
 
 func main() {
 	for {

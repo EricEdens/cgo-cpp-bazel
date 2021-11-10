@@ -1,4 +1,5 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
+load("@io_bazel_rules_go//go:def.bzl", "TOOLS_NOGO", "nogo")
 
 gazelle(
     name = "gazelle-update-repos",
@@ -12,3 +13,9 @@ gazelle(
 
 # gazelle:prefix hpe.one
 gazelle(name = "gazelle")
+
+nogo(
+    name = "my_nogo",
+    vet = True,
+    visibility = ["//visibility:public"],
+)

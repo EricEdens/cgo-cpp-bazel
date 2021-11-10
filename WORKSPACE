@@ -28,7 +28,10 @@ go_dependencies()
 # Declare indirect dependencies and register toolchains.
 go_rules_dependencies()
 
-go_register_toolchains(version = "1.17.3")
+go_register_toolchains(
+    nogo = "@//:my_nogo",
+    version = "1.17.3",
+)
 
 gazelle_dependencies()
 
