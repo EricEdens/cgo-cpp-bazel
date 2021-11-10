@@ -11,8 +11,8 @@ typedef struct Request {
 } Request;
 
 typedef struct Response {
-  int32_t length;
-  int32_t sum;
+  char *bytes;
+  int32_t bytes_len;
 } Response;
 
 void HandleRequest(Request *request, Response *response);

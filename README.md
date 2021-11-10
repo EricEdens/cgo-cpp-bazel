@@ -14,8 +14,8 @@ This example uses structs to pass data between Go and C.
 ## Adding dependencies
 
 1. Use **go get** to download the dependency: `go get github.com/stretchr/testify`
-2. Update WORKSPACE with the gazelle: `bazel run //:gazelle -- update-repos -from_file=go.mod`
+2. Update WORKSPACE with the gazelle: `bazel run //:gazelle-update-repos`
 
 ## Running benchmarks
 
-`bazel test server:go_server_test -- -test.bench=.`
+`bazel run server:go_server_test -- -test.bench=.`

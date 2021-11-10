@@ -1,4 +1,5 @@
 #include "server.h"
+#include "server/response.pb.h"
 
 class Server {
  public:
@@ -18,6 +19,12 @@ class Server {
 
 void HandleRequest(Request *request, Response *response) {
   auto server = Server();
-  response->length = server.length(request);
-  response->sum = server.total(request);
+  auto pb = server::ServerResponse();
+  pb.set_length(server.length(request));
+  pb.set_total(server.total(request));
+  int size = pb.ByteSizeLong();
+  response->bytes = new char[size];
+  pb.SerializeToArray(response->bytes, size);
+  response->bytes_len = size;
+  std::cerr << pb.SerializeAsString();
 }
