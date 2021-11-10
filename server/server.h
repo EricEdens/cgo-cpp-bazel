@@ -6,7 +6,7 @@ extern "C" {
 #endif
 
 typedef struct Request {
-  char *bytes;
+  const char *bytes;
   int32_t bytes_len;
 } Request;
 
@@ -15,7 +15,7 @@ typedef struct Response {
   int32_t bytes_len;
 } Response;
 
-void HandleRequest(Request *request, Response *response);
+void HandleRequest(const char* bytes, int32_t len, Response *response);
 
 #ifdef __cplusplus
 }

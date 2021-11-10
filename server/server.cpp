@@ -17,14 +17,14 @@ class Server {
   }
 };
 
-void HandleRequest(Request *request, Response *response) {
+void HandleRequest(const char* bytes, int32_t len, Response *response) {
   auto server = Server();
+  auto request = Request{bytes, len};
   auto pb = server::ServerResponse();
-  pb.set_length(server.length(request));
-  pb.set_total(server.total(request));
-  int size = pb.ByteSizeLong();
+  pb.set_length(server.length(&request));
+  pb.set_total(server.total(&request));
+  auto size = pb.ByteSizeLong();
   response->bytes = new char[size];
   pb.SerializeToArray(response->bytes, size);
   response->bytes_len = size;
-  std::cerr << pb.SerializeAsString();
 }
