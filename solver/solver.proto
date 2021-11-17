@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package solverpb;
+
+option go_package = "hpe.one/solver/solverpb";
+
+message SolverRequest {
+  string request = 1;
+}
+
+message SolverResponse {
+  string response = 1;
+  string error = 2;
+}
+
+service SolverService {
+  rpc Solver(SolverRequest) returns (SolverResponse);
+}
